@@ -1,7 +1,9 @@
-import { CommandHandler } from "../../src/CommandHandler"
 import { BookGetter } from "../../src/book/application/BookGetter"
+import { CommandHandler } from "../../src/CommandHandler"
+import { BookApiRepositoryMock } from "./BookApiRepositoryMock"
 
-const bookGetter = new BookGetter()
+const bookApiRepositoryMock = new BookApiRepositoryMock()
+const bookGetter = new BookGetter(bookApiRepositoryMock)
 const commandHandler = new CommandHandler(bookGetter)
 
 // beforeEach(() => {

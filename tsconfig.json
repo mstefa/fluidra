@@ -16,6 +16,8 @@
   "include": [
     "src/**/**.ts",
     "index.ts",
+    "src/book/domain/BookExternalRepository.ts",
+    "tests/book/BookApiRepositoryMock.ts",
   ],
   "exclude": [
     "node_modules"
