@@ -1,5 +1,5 @@
 import { Nullable } from '../../shared/domain/Nullable';
-import { Uuid } from '../../shared/domain/value-objects/Uuid';
+import { Uuid } from '../../shared/infrastructure/Uuid';
 import { Article } from './Article';
 
 export interface ArticleRepository {

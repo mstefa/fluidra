@@ -9,21 +9,16 @@ const bookApiRepositoryMock = new BookApiRepositoryMock()
 const bookGetter = new BookGetter(bookApiRepositoryMock, bookDBRepositoryMock)
 const commandHandler = new CommandHandler(bookGetter)
 
-// beforeEach(() => {
 
-//   commandHandler = new CommandHandler()
-
-// });
-
-describe('Get a book by Code', () => {
-  it('Get a book an save it on the DB successfully', async () => {
+describe('List all books', () => {
+  it('Get all books and save it on the DB successfully', async () => {
     const id = '11';
     const mockedBook = new Book(id, "book title", 'book author', 2000);
     bookApiRepositoryMock.returnOnSearch(mockedBook)
     const command = {
-      event: "booksrequest",
-      action: "GET",
-      code: id
+      event: "listbooks",
+      action: "LIST",
+      code: ""
     };
 
     const commandString = JSON.stringify(command)

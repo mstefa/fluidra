@@ -1,6 +1,6 @@
 
 import { EntityNotFoundError } from "../../shared/domain/errors/EntityNotFoundError";
-import { Uuid } from "../../shared/domain/value-objects/Uuid";
+import { Uuid } from "../../shared/infrastructure/Uuid";
 import { ArticleRepository } from "../domain/ArticleRepository";
 import { ArticleDto } from "../dtos/ArticleDto";
 

@@ -1,5 +1,5 @@
 import { Email } from '../../shared/domain/value-objects/Email';
-import { Uuid } from '../../shared/domain/value-objects/Uuid';
+import { Uuid } from '../../shared/infrastructure/Uuid';
 import { Article } from '../domain/Article';
 import { ArticleRepository } from '../domain/ArticleRepository';
 import { ArticleBody } from '../domain/value-objects/ArticleBody';

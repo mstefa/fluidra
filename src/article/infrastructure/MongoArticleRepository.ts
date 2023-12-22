@@ -1,8 +1,8 @@
 
 
 import { Nullable } from '../../shared/domain/Nullable';
-import { Uuid } from '../../shared/domain/value-objects/Uuid';
 import { MongoRepository } from '../../shared/infrastructure/mongo/MongoRepository';
+import { Uuid } from '../../shared/infrastructure/Uuid';
 import { Article } from '../domain/Article';
 import { ArticleRepository } from '../domain/ArticleRepository';
 

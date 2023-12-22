@@ -2,7 +2,7 @@ import { Article } from '../../../src/article/domain/Article';
 import { ArticleRepository } from '../../../src/article/domain/ArticleRepository';
 import { Nullable } from '../../../src/shared/domain/Nullable';
 import { Email } from '../../../src/shared/domain/value-objects/Email';
-import { Uuid } from '../../../src/shared/domain/value-objects/Uuid';
+import { Uuid } from '../../../src/shared/infrastructure/Uuid';
 
 export class ArticleRepositoryMock implements ArticleRepository {
 

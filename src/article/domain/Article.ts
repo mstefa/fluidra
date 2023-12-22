@@ -1,6 +1,6 @@
 import { AggregateRoot } from '../../shared/domain/AggregateRoot';
 import { Email } from '../../shared/domain/value-objects/Email';
-import { Uuid } from '../../shared/domain/value-objects/Uuid';
+import { Uuid } from '../../shared/infrastructure/Uuid';
 import { ArticleDto } from '../dtos/ArticleDto';
 import { ArticleBody } from './value-objects/ArticleBody';
 import { ArticleDate } from './value-objects/ArticleDate';

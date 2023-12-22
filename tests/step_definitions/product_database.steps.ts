@@ -8,7 +8,7 @@ import { ProductImage } from '../../src/product/domain/value-objects/ProductImag
 import { ProductPrice } from '../../src/product/domain/value-objects/ProductPrice';
 import { ProductTitle } from '../../src/product/domain/value-objects/ProductTitle';
 import { ProductDto } from '../../src/product/dtos/ProductDto';
-import { Uuid } from '../../src/shared/domain/value-objects/Uuid';
+import { Uuid } from '../../src/shared/infrastructure/Uuid';
 import { ProductMother } from '../product/unit/ProductMother';
 import { _productRepository } from './preparation.steps';
 
