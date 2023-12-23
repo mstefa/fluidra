@@ -3,7 +3,7 @@ import { Book } from './Book';
 
 export interface BookExternalRepository {
 
-  list(): Promise<Book>;
+  list(): Promise<Book[]>;
   search(id: string): Promise<Nullable<Book>>;
 
 }

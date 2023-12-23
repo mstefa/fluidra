@@ -2,7 +2,7 @@
   "compilerOptions": {
     "module": "commonjs",
     "esModuleInterop": true,
-    "target": "es6",
+    "target": "es2017",
     "noImplicitAny": true,
     "moduleResolution": "node",
     "sourceMap": false,
@@ -17,7 +17,7 @@
     "src/**/**.ts",
     "index.ts",
     "src/book/domain/BookExternalRepository.ts",
-    "tests/book/BookApiRepositoryMock.ts",
+    "tests/book/share/BookApiRepositoryMock.ts",
   ],
   "exclude": [
     "node_modules"

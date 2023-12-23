@@ -14,8 +14,7 @@ export class DomainEvent {
     this.eventId = eventId;
     this.aggregateId = aggregateId;
     this.eventName = eventName;
-    this.ocurredOn = Date.now().toString(),
-
+    this.ocurredOn = Date.now().toString()
   }
 
 }

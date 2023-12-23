@@ -1,6 +1,6 @@
 import { faker } from '@faker-js/faker';
 
-import { Uuid } from '../../../src/shared/infrastructure/Uuid';
+import { Uuid } from '../../../src/shared/domain/Uuid';
 
 export class UuidMother {
   static random(): Uuid {

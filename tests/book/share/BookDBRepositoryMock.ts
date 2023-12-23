@@ -1,5 +1,6 @@
-import { Book } from "../../src/book/domain/Book";
-import { BookInternalRepository } from "../../src/book/domain/BookInternalRepository";
+import { Book } from "../../../src/book/domain/Book";
+import { BookInternalRepository } from "../../../src/book/domain/BookInternalRepository";
+import { Nullable } from "../../../src/shared/Nullable";
 
 
 export class BookDBRepositoryMock implements BookInternalRepository {
@@ -15,6 +16,11 @@ export class BookDBRepositoryMock implements BookInternalRepository {
     return this.mockSaveAll(books);
   }
 
+  search(id: string): Promise<Nullable<Book>> {
+    console.log(id)
+    throw new Error("Method not implemented.");
+  }
+
   assertLastSavedBookIs(expected: Book): void {
     const mock = this.mockSave.mock;
     const lastSavedBook = mock.calls[mock.calls.length - 1][0] as Book;
@@ -22,13 +28,11 @@ export class BookDBRepositoryMock implements BookInternalRepository {
     expect(lastSavedBook).toEqual(expected);
   }
 
-  // assertLastSavedAllBooksAre(expected: Book[]): void {
-  //   const mock = this.mockSaveAll.mock;
-  //   const lastSavedBooks = mock.calls[mock.calls.length - 1][0];
-  //   console.log(lastSavedBooks)
-  //   console.log(expected)
+  assertLastSavedAllBooksAre(expected: Book[]): void {
+    const mock = this.mockSaveAll.mock;
+    const lastSavedBooks = mock.calls[mock.calls.length - 1][0];
+    expect(lastSavedBooks).toEqual(expected);
 
-  //   throw new Error('Method not implemented.')
-  // }
+  }
 
 }

@@ -1,9 +1,7 @@
 import { Collection, MongoClient } from 'mongodb';
 
-import { AggregateRoot } from '../../domain/AggregateRoot';
-import { Uuid } from '../Uuid';
 
-export abstract class MongoRepository<T extends AggregateRoot> {
+export abstract class MongoRepository<T> {
   constructor(private _client: Promise<MongoClient>) { }
 
   protected abstract collectionName(): string;
@@ -21,12 +19,4 @@ export abstract class MongoRepository<T extends AggregateRoot> {
     await collection.drop();
   }
 
-
-  protected async persist(id: Uuid, aggregateRoot: T): Promise<void> {
-    const collection = await this.collection();
-
-    const document = { ...aggregateRoot.toPrimitives(), _id: id, id: undefined };
-
-    await collection.updateOne({ _id: id }, { $set: document }, { upsert: true });
-  }
 }

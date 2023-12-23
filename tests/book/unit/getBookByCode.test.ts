@@ -1,13 +1,15 @@
-import { BookGetter } from "../../src/book/application/BookGetter"
-import { Book } from "../../src/book/domain/Book"
-import { CommandHandler } from "../../src/CommandHandler"
-import { BookApiRepositoryMock } from "./BookApiRepositoryMock"
-import { BookDBRepositoryMock } from "./BookDBRepositoryMock"
+import { BookGetter } from "../../../src/book/application/BookGetter"
+import { BookLister } from "../../../src/book/application/BookLister"
+import { Book } from "../../../src/book/domain/Book"
+import { CommandHandler } from "../../../src/CommandHandler"
+import { BookApiRepositoryMock } from "../share/BookApiRepositoryMock"
+import { BookDBRepositoryMock } from "../share/BookDBRepositoryMock"
 
 const bookDBRepositoryMock = new BookDBRepositoryMock()
 const bookApiRepositoryMock = new BookApiRepositoryMock()
 const bookGetter = new BookGetter(bookApiRepositoryMock, bookDBRepositoryMock)
-const commandHandler = new CommandHandler(bookGetter)
+const bookLister = new BookLister(bookApiRepositoryMock, bookDBRepositoryMock)
+const commandHandler = new CommandHandler(bookGetter, bookLister)
 
 // beforeEach(() => {
 

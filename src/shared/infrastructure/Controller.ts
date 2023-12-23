@@ -10,7 +10,7 @@ export abstract class Controller {
   protected errorHandling(error: unknown, res: Response) {
     Logger.error(error);
     if (error instanceof DomainError) {
-      res.status(error.httpStatus).send({ message: error.message });
+      // res.status(error.httpStatus).send({ message: error.message });
     }
     res.status(httpStatus.INTERNAL_SERVER_ERROR).send();
   }

@@ -2,7 +2,7 @@ import { Logger } from "../../shared/infrastructure/logger/Logger";
 import { BookExternalRepository } from "../domain/BookExternalRepository";
 import { BookInternalRepository } from "../domain/BookInternalRepository";
 
-export class BookGetter {
+export class BookLister {
   private externalRepository: BookExternalRepository;
   private internalRepository: BookInternalRepository;
 
@@ -14,23 +14,17 @@ export class BookGetter {
     this.internalRepository = internalRepository;
   }
 
-  async run(bookCode: string): Promise<void> {
+  async run(): Promise<void> {
 
-    Logger.info(`Searching book with BookCode <${bookCode}> `)
-    const book = await this.externalRepository.search(bookCode)
+    const book = await this.externalRepository.list()
 
-    if (book === null) {
-      Logger.info(`No book with BookCode <${bookCode}> was found`)
+    if (book.length === 0) {
+      Logger.info(`No book was found`)
 
       return
     }
-    Logger.info(`Saving book with BookCode <${bookCode}> `)
 
-    await this.internalRepository.save(book)
-
-    Logger.info(`Book with BookCode <${bookCode}> Saved`)
-
-    return
+    this.internalRepository.saveAll(book)
 
   }
 }
