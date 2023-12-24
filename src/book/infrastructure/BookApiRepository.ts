@@ -13,9 +13,30 @@ export class BookApiRepository implements BookExternalRepository {
     this.baseURL = baseURL
   }
 
-  list(): Promise<Book[]> {
+  async list(): Promise<Book[]> {
 
-    throw new Error('Not implemented')
+    const url = `${this.baseURL}/books`;
+    try {
+      const response: AxiosResponse = await axios.get(url);
+
+      if (response.status > 300) {
+        throw new Error(`Failed to fetch data. Status: ${response.status}`);
+      }
+      const dataArray = response.data;
+
+      if (dataArray.length > 0) {
+
+        return dataArray.map((data: { id: string; title: string; author: string; year: number; }) => new Book(data.id, data.title, data.author, data.year))
+      }
+
+      return [];
+
+    } catch (error) {
+      // Handle any errors that occurred during the request
+      Logger.error(error);
+
+      return []
+    }
 
   }
 
@@ -23,8 +44,6 @@ export class BookApiRepository implements BookExternalRepository {
     Logger.info(`External ${id}`)
 
     const url = `${this.baseURL}/book/${id}`;
-    Logger.info(this.baseURL)
-    // const url = `http://localhost:4001/book/${id}`
 
     try {
       const response: AxiosResponse = await axios.get(url);

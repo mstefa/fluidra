@@ -45,13 +45,13 @@ export default class MockServer {
     this.express.get('/books', (req, res) => {
 
       const response = [{
-        id: 1001,
-        title: 'book title',
-        author: 'book author',
+        id: "1001",
+        title: 'book title1',
+        author: 'book author1',
         year: 2000
       },
       {
-        id: 1002,
+        id: "1002",
         title: 'book title2',
         author: 'book author2',
         year: 2002

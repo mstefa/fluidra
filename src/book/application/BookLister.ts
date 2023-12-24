@@ -16,6 +16,7 @@ export class BookLister {
 
   async run(): Promise<void> {
 
+    Logger.info(`Searching all books`)
     const book = await this.externalRepository.list()
 
     if (book.length === 0) {
@@ -24,7 +25,9 @@ export class BookLister {
       return
     }
 
-    this.internalRepository.saveAll(book)
+    Logger.info(`Saving list of books`)
+
+    await this.internalRepository.saveAll(book)
 
   }
 }

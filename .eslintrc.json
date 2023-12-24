@@ -94,6 +94,7 @@
     "simple-import-sort/imports": "error",
     "unused-imports/no-unused-imports": "error",
     "no-unused-vars": "off",
+    "no-case-declarations": 1,
     "unused-imports/no-unused-vars": [
       "warn",
       {

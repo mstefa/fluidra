@@ -19,7 +19,7 @@ let _mongoClient: Promise<MongoClient>;
 let mockServer: MockServer
 
 
-xdescribe('Integration: Get a book by Code', () => {
+describe('Integration: List all books', () => {
 
   afterAll(async () => {
 
@@ -49,49 +49,30 @@ xdescribe('Integration: Get a book by Code', () => {
 
 
 
-  it('Get a book an save it on the DB successfully', async () => {
-    const id = '111';
-    const mockedBook = new Book(id, "book title", 'book author', 2000);
+  it('List all books and save them on the DB successfully', async () => {
+    const id1 = '1001';
+    const id2 = '1002';
+
+    const mockedBook1 = new Book(id1, "book title1", 'book author1', 2000);
+    const mockedBook2 = new Book(id2, "book title2", 'book author2', 2002);
 
     const command = {
-      event: "booksrequest1",
-      action: "GET",
-      code: id
+      event: "booksrequest101",
+      action: "LIST",
+      code: ''
     };
+
     const commandString = JSON.stringify(command);
 
     await commandHandler.handle(commandString);
 
-    const actual = await bookDBRepository.search(id);
+    const actual1 = await bookDBRepository.search(id1);
+    const actual2 = await bookDBRepository.search(id2);
 
-    expect(actual).toEqual(mockedBook);
+    expect(actual1).toEqual(mockedBook1);
+    expect(actual2).toEqual(mockedBook2);
 
-  })
 
-  it('Handler correctly when the api respond an error 400', async () => {
-    const id = 'ERROR400';
-
-    const command = {
-      event: "booksrequest2",
-      action: "GET",
-      code: id
-    };
-    const commandString = JSON.stringify(command);
-
-    await commandHandler.handle(commandString);
-  })
-
-  it('Handler correctly when the api respond an error 500', async () => {
-    const id = 'ERROR500';
-
-    const command = {
-      event: "booksrequest3",
-      action: "GET",
-      code: id
-    };
-    const commandString = JSON.stringify(command);
-
-    await commandHandler.handle(commandString);
-  })
+  });
 
 })

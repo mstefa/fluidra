@@ -23,7 +23,7 @@ const id = '111';
 const commandHandler = new CommandHandler(bookGetter, bookLister)
 const command = {
   event: "booksreques",
-  action: "GET",
+  action: "LIST",
   code: id
 };
 const commandString = JSON.stringify(command);

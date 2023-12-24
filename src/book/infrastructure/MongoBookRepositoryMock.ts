@@ -21,19 +21,21 @@ export class MongoBookRepositoryMock extends MongoRepository<Book> implements Bo
   }
 
   async save(book: Book): Promise<void> {
-    Logger.info('Saving...')
+    Logger.info('Saving Book on DB')
     const collection = await this.collection();
-    const document = { ...book }
+    const document: BookDocument = { ...book }
     await collection.insertOne(document);
   }
 
   async saveAll(books: Book[]): Promise<void> {
     const collection = await this.collection();
-    await collection.insertMany(books)
+
+    const documents = [...books]
+    await collection.insertMany(documents)
   }
 
   async search(id: string): Promise<Nullable<Book>> {
-    Logger.info('Searching...')
+    Logger.info('Searching book in DB')
     const collection = await this.collection();
     const document = await collection.findOne<BookDocument>({ id })
     if (!document) {
@@ -45,21 +47,7 @@ export class MongoBookRepositoryMock extends MongoRepository<Book> implements Bo
 
   async dropMock() {
 
-    const delay = (milliseconds: number): Promise<void> => {
-      return new Promise(resolve => {
-        setTimeout(() => {
-          resolve();
-        }, milliseconds);
-      });
-    };
-
     Logger.info('Cleaning Test DB')
-    await delay(2000);
-
-    // const clientCurrent = await this.client()
-    // if ( clientCurrent.db().currentOp()){
-
-    // }
     await this._drop()
     Logger.info('DB Cleaned')
 

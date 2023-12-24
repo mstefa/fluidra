@@ -1,7 +1,6 @@
 import { Book } from "../../../src/book/domain/Book";
 import { BookExternalRepository } from "../../../src/book/domain/BookExternalRepository";
 import { Nullable } from "../../../src/shared/domain/Nullable";
-import { Logger } from "../../../src/shared/infrastructure/logger/Logger";
 
 export class BookApiRepositoryMock implements BookExternalRepository {
 
@@ -18,9 +17,8 @@ export class BookApiRepositoryMock implements BookExternalRepository {
 
   }
 
-  search(id: string): Promise<Nullable<Book>> {
-    Logger.info(`External ${id}`)
-
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  search(_id: string): Promise<Nullable<Book>> {
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     return new Promise((resolve, _reject) => {
       resolve(this.mockBook);

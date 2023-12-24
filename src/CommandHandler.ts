@@ -2,6 +2,7 @@ import { BookGetter } from "./book/application/BookGetter";
 import { BookLister } from "./book/application/BookLister";
 import { InvalidArgumentError } from "./shared/domain/errors/InvalidArgumentError";
 import { Command, CommandActionEnum } from "./shared/infrastructure/Command";
+import { Logger } from "./shared/infrastructure/logger/Logger";
 
 export class CommandHandler {
 
@@ -24,7 +25,8 @@ export class CommandHandler {
         await this.bookLister.run()
         break
       default:
-        throw new InvalidArgumentError(`Command <${command.action}> is Not a Valid Command`);
+        const error = new InvalidArgumentError(`Command <${command.action}> is Not a Valid Command`);
+        Logger.error(error)
     }
 
 
