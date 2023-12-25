@@ -4,7 +4,7 @@ import { InvalidArgumentError } from "./shared/domain/errors/InvalidArgumentErro
 import { Command, CommandActionEnum } from "./shared/infrastructure/Command";
 import { Logger } from "./shared/infrastructure/logger/Logger";
 
-export class CommandHandler {
+export class EvenHandler {
 
   constructor(
     private bookGetter: BookGetter,

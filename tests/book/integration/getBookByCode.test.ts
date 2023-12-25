@@ -5,7 +5,7 @@ import { BookLister } from "../../../src/book/application/BookLister"
 import { Book } from "../../../src/book/domain/Book"
 import { BookApiRepository } from "../../../src/book/infrastructure/BookApiRepository"
 import { MongoBookRepository } from "../../../src/book/infrastructure/MongoBookRepository"
-import { CommandHandler } from "../../../src/CommandHandler"
+import { EvenHandler } from "../../../src/EvenHandler"
 import { config } from '../../../src/shared/config/appConfig';
 import { Logger } from "../../../src/shared/infrastructure/logger/Logger"
 import { MongoClientFactory } from "../../../src/shared/infrastructure/mongo/MongoClientFactory";
@@ -15,7 +15,7 @@ let bookDBRepository: MongoBookRepository;
 let bookApiRepository: BookApiRepository;
 let bookGetter: BookGetter;
 let bookLister: BookLister;
-let commandHandler: CommandHandler;
+let commandHandler: EvenHandler;
 let _mongoClient: Promise<MongoClient>;
 let mockServer: MockServer
 
@@ -58,7 +58,7 @@ describe('Integration: Get a book by Code', () => {
     bookApiRepository = new BookApiRepository('http://localhost:4000')
     bookGetter = new BookGetter(bookApiRepository, bookDBRepository)
     bookLister = new BookLister(bookApiRepository, bookDBRepository)
-    commandHandler = new CommandHandler(bookGetter, bookLister)
+    commandHandler = new EvenHandler(bookGetter, bookLister)
 
   });
 

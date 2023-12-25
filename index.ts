@@ -2,7 +2,7 @@ import { BookGetter } from "./src/book/application/BookGetter";
 import { BookLister } from "./src/book/application/BookLister";
 import { BookApiRepository } from "./src/book/infrastructure/BookApiRepository";
 import { MongoBookRepository } from "./src/book/infrastructure/MongoBookRepository";
-import { CommandHandler } from "./src/CommandHandler";
+import { EvenHandler } from "./src/EvenHandler";
 import { config } from "./src/shared/config/appConfig";
 import { MongoClientFactory } from "./src/shared/infrastructure/mongo/MongoClientFactory";
 import MockServer from "./tests/book/integration/MockServer"
@@ -20,7 +20,7 @@ const bookGetter = new BookGetter(bookApiRepository, bookDBRepository)
 const bookLister = new BookLister(bookApiRepository, bookDBRepository)
 
 const id = '111';
-const commandHandler = new CommandHandler(bookGetter, bookLister)
+const commandHandler = new EvenHandler(bookGetter, bookLister)
 const command = {
   event: "booksreques",
   action: "LIST",

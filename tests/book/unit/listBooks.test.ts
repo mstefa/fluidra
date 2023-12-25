@@ -1,7 +1,7 @@
 import { BookGetter } from "../../../src/book/application/BookGetter"
 import { BookLister } from "../../../src/book/application/BookLister"
 import { Book } from "../../../src/book/domain/Book"
-import { CommandHandler } from "../../../src/CommandHandler"
+import { EvenHandler } from "../../../src/EvenHandler"
 import { BookApiRepositoryMock } from "./mock/BookApiRepositoryMock"
 import { BookDBRepositoryMock } from "./mock/BookDBRepositoryMock"
 
@@ -10,7 +10,7 @@ const bookApiRepositoryMock = new BookApiRepositoryMock()
 const bookGetter = new BookGetter(bookApiRepositoryMock, bookDBRepositoryMock)
 const bookLister = new BookLister(bookApiRepositoryMock, bookDBRepositoryMock)
 
-const commandHandler = new CommandHandler(bookGetter, bookLister)
+const commandHandler = new EvenHandler(bookGetter, bookLister)
 
 
 describe('List all books', () => {
