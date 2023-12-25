@@ -1,7 +1,7 @@
 import { BookGetter } from "./src/book/application/BookGetter";
 import { BookLister } from "./src/book/application/BookLister";
 import { BookApiRepository } from "./src/book/infrastructure/BookApiRepository";
-import { MongoBookRepositoryMock } from "./src/book/infrastructure/MongoBookRepositoryMock";
+import { MongoBookRepository } from "./src/book/infrastructure/MongoBookRepository";
 import { CommandHandler } from "./src/CommandHandler";
 import { config } from "./src/shared/config/appConfig";
 import { MongoClientFactory } from "./src/shared/infrastructure/mongo/MongoClientFactory";
@@ -14,7 +14,7 @@ const mockServer = new MockServer(port);
 
 const url = `${config.db.host}/${config.app.env}`;
 const _mongoClient = MongoClientFactory.createClient({ url });
-const bookDBRepository = new MongoBookRepositoryMock(_mongoClient);
+const bookDBRepository = new MongoBookRepository(_mongoClient);
 const bookApiRepository = new BookApiRepository(`http://localhost:${port}`)
 const bookGetter = new BookGetter(bookApiRepository, bookDBRepository)
 const bookLister = new BookLister(bookApiRepository, bookDBRepository)

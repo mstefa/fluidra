@@ -1,6 +1,6 @@
-import { Book } from "../../../src/book/domain/Book";
-import { BookInternalRepository } from "../../../src/book/domain/BookInternalRepository";
-import { Nullable } from "../../../src/shared/Nullable";
+import { Book } from "../../../../src/book/domain/Book";
+import { BookInternalRepository } from "../../../../src/book/domain/BookInternalRepository";
+import { Nullable } from "../../../../src/shared/Nullable";
 
 
 export class BookDBRepositoryMock implements BookInternalRepository {

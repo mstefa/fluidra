@@ -14,7 +14,7 @@ interface BookDocument {
   year: number
 }
 
-export class MongoBookRepositoryMock extends MongoRepository<Book> implements BookInternalRepository {
+export class MongoBookRepository extends MongoRepository<Book> implements BookInternalRepository {
 
   protected collectionName(): string {
     return 'book';
@@ -28,6 +28,8 @@ export class MongoBookRepositoryMock extends MongoRepository<Book> implements Bo
   }
 
   async saveAll(books: Book[]): Promise<void> {
+    Logger.info('Saving Books on DB')
+
     const collection = await this.collection();
 
     const documents = [...books]
@@ -45,12 +47,5 @@ export class MongoBookRepositoryMock extends MongoRepository<Book> implements Bo
     return new Book(document.id, document.title, document.author, document.year)
   }
 
-  async dropMock() {
-
-    Logger.info('Cleaning Test DB')
-    await this._drop()
-    Logger.info('DB Cleaned')
-
-  }
 
 }

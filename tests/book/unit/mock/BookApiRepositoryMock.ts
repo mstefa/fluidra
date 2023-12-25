@@ -1,6 +1,6 @@
-import { Book } from "../../../src/book/domain/Book";
-import { BookExternalRepository } from "../../../src/book/domain/BookExternalRepository";
-import { Nullable } from "../../../src/shared/domain/Nullable";
+import { Book } from "../../../../src/book/domain/Book";
+import { BookExternalRepository } from "../../../../src/book/domain/BookExternalRepository";
+import { Nullable } from "../../../../src/shared/domain/Nullable";
 
 export class BookApiRepositoryMock implements BookExternalRepository {
 

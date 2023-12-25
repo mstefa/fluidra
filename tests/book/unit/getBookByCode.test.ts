@@ -2,8 +2,8 @@ import { BookGetter } from "../../../src/book/application/BookGetter"
 import { BookLister } from "../../../src/book/application/BookLister"
 import { Book } from "../../../src/book/domain/Book"
 import { CommandHandler } from "../../../src/CommandHandler"
-import { BookApiRepositoryMock } from "../share/BookApiRepositoryMock"
-import { BookDBRepositoryMock } from "../share/BookDBRepositoryMock"
+import { BookApiRepositoryMock } from "./mock/BookApiRepositoryMock"
+import { BookDBRepositoryMock } from "./mock/BookDBRepositoryMock"
 
 const bookDBRepositoryMock = new BookDBRepositoryMock()
 const bookApiRepositoryMock = new BookApiRepositoryMock()
