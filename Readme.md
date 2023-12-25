@@ -8,7 +8,7 @@ Test cases were written. This includes unit tests for individual components, tes
 
 ## Architecture Overview
 
-![Alt Text](Arquitectura.png)
+![Layer Diagram](Arquitectura.png)
 
 The architecture revolves around the handling of input events by the `EventHandler` class. This class, in turn, invokes the appropriate use cases based on the action specified by the event.
 
