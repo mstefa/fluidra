@@ -14,7 +14,7 @@ interface BookDocument {
   year: number
 }
 
-export class MongoBookRepository extends MongoRepository<Book> implements BookInternalRepository {
+export class MongoBookRepository extends MongoRepository implements BookInternalRepository {
 
   protected collectionName(): string {
     return 'book';
